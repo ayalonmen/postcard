@@ -1,5 +1,5 @@
 {
-    "hash": "46328d658097da9d3b56703798508f31",
+    "hash": "88779ebe412a58c58f5de592ff1c8872",
     "packages": [
         {
             "package": "doctrine/common",
@@ -54,6 +54,18 @@
             "version": "2.3.x-dev",
             "source-reference": "ea2b28857830720460a345c80c6e7d3f6adae93a",
             "commit-date": "1348121015"
+        },
+        {
+            "package": "friendsofsymfony/user-bundle",
+            "version": "dev-master",
+            "alias-pretty-version": "2.0.x-dev",
+            "alias-version": "2.0.9999999.9999999-dev"
+        },
+        {
+            "package": "friendsofsymfony/user-bundle",
+            "version": "dev-master",
+            "source-reference": "570a24893a65e6e90a649d55f384be810202b6f0",
+            "commit-date": "1348823929"
         },
         {
             "package": "jms/aop-bundle",
