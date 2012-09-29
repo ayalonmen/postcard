@@ -1,1 +1,9 @@
-Hello !
+<h1>List of all Postcards</h1>
+{% for postcard in postcards %}
+	<ul>
+		<li>{{ postcard.title }}</li>
+		<li>{{ postcard.location }}</li>
+		<li>{{ postcard.body }}</li>
+		<li>{{ postcard.picture }}</li>
+	</ul>
+{% endfor %}
