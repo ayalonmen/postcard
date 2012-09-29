@@ -11,7 +11,9 @@ class PostcardController extends Controller
     	$em = $this->getDoctrine()->getEntityManager();
     	$postcards = $em->getRepository('PostcardPostcardBundle:Postcard')->findAll();
 
-        return $this->render('PostcardPostcardBundle:Postcard:index.html.twig',array(
+    	$format = $this->getRequest()->getRequestFormat();
+
+        return $this->render('PostcardPostcardBundle:Postcard:index.'.$format.'.twig',array(
         	'postcards'=>$postcards,
         ));
     }
