@@ -1,5 +1,5 @@
 {
-    "hash": "61e5402c65e849d3e9638767847c1fa3",
+    "hash": "6c05d84ae10b2a8e683c318fdfe50529",
     "packages": [
         {
             "package": "doctrine/common",
@@ -68,6 +68,10 @@
             "commit-date": "1346947943"
         },
         {
+            "package": "jms/serializer-bundle",
+            "version": "0.9.0"
+        },
+        {
             "package": "kriswallsmith/assetic",
             "version": "dev-master",
             "alias-pretty-version": "1.1.x-dev",
@@ -105,21 +109,9 @@
         },
         {
             "package": "sensio/generator-bundle",
-            "version": "dev-master",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
-        },
-        {
-            "package": "sensio/generator-bundle",
-            "version": "dev-master",
-            "alias-pretty-version": "2.2.x-dev",
-            "alias-version": "2.2.9999999.9999999-dev"
-        },
-        {
-            "package": "sensio/generator-bundle",
-            "version": "dev-master",
-            "source-reference": "f5bda1014f5f124a0fd881644664493e36a09ad0",
-            "commit-date": "1348070473"
+            "version": "2.1.x-dev",
+            "source-reference": "3a65c9bf7d31aecacffc15a48f5eb2ece3615ef0",
+            "commit-date": "1348030981"
         },
         {
             "package": "swiftmailer/swiftmailer",
@@ -196,8 +188,8 @@
         {
             "package": "twig/twig",
             "version": "dev-master",
-            "source-reference": "73ab8ff50c53a3a6046b3a499bd0c6412afc344f",
-            "commit-date": "1348869347"
+            "source-reference": "120cde3fa54c31047edf1cd003752ca119dec9a8",
+            "commit-date": "1348936415"
         }
     ],
     "packages-dev": null,
