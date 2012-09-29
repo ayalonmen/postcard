@@ -1,0 +1,6 @@
+<h1>Publish a new Postcard</h1>
+<form action="{{ path('postcard_postcard_new') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+
+    <input type="submit" />
+</form>
