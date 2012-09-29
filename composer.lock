@@ -1,5 +1,5 @@
 {
-    "hash": "6c05d84ae10b2a8e683c318fdfe50529",
+    "hash": "46328d658097da9d3b56703798508f31",
     "packages": [
         {
             "package": "doctrine/common",
@@ -36,6 +36,18 @@
             "version": "dev-master",
             "source-reference": "186d605aa6b592bd577e07e0e9a2c420b02b2492",
             "commit-date": "1345465418"
+        },
+        {
+            "package": "doctrine/doctrine-migrations-bundle",
+            "version": "dev-master",
+            "source-reference": "3792aa78445773387754c6853bbd7f4dcb31f486",
+            "commit-date": "1341472972"
+        },
+        {
+            "package": "doctrine/migrations",
+            "version": "dev-master",
+            "source-reference": "3dd738b2a709f4d5185c144292189c6e708ca37d",
+            "commit-date": "1348090059"
         },
         {
             "package": "doctrine/orm",
@@ -134,8 +146,8 @@
         {
             "package": "symfony/assetic-bundle",
             "version": "dev-master",
-            "source-reference": "64345e86761444c35679e1aed424e1ed2370f0de",
-            "commit-date": "1347626244"
+            "source-reference": "5ebcf72d9b2d7028ca8c9b71b464ccc81d4795d2",
+            "commit-date": "1348938560"
         },
         {
             "package": "symfony/monolog-bundle",
@@ -164,8 +176,8 @@
         {
             "package": "symfony/symfony",
             "version": "2.1.x-dev",
-            "source-reference": "bd845b3bbcb13972924fe3030e37fbee8dc04e47",
-            "commit-date": "1348854550"
+            "source-reference": "4e3ea227360c631579a37d6071ea0bdee3dd2732",
+            "commit-date": "1348937790"
         },
         {
             "package": "twig/extensions",
@@ -198,6 +210,7 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "doctrine/doctrine-fixtures-bundle": 20
+        "doctrine/doctrine-fixtures-bundle": 20,
+        "doctrine/doctrine-migrations-bundle": 20
     }
 }
