@@ -16,6 +16,8 @@ class Postcard extends Base
 
 	private $picture;
 
+    private $pictureFile;
+
     /**
      * Set title
      *
@@ -116,5 +118,46 @@ class Postcard extends Base
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getPictureFile()
+    {
+        return $this->pictureFile;
+    }
+
+    public function setPictureFile($pictureFile)
+    {
+        $this->pictureFile = $pictureFile;
+    }
+
+    public function getUploadRootDir()
+    {
+        return __DIR__ . "/../../../../web/" . $this->getUploadDir();
+    }
+
+    public function getUploadDir()
+    {
+        return 'uploads/postcards/';
+    }
+
+    public function getAbsolutePath()
+    {
+        return null === $this->picture ? null : $this->getUploadRootDir() . $this->picture;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->picture ? null : $this->getUploadDir() . $this->picture;
+    }
+
+    public function upload()
+    {
+        if ($this->pictureFile === null) {
+            return;
+        }
+
+        $this->pictureFile->move($this->getUploadRootDir(), $this->pictureFile->getClientOriginalName());
+        $this->picture = $this->pictureFile->getClientOriginalName();
+        $this->pictureFile = null;
     }
 }

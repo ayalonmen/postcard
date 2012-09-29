@@ -12,7 +12,7 @@ class PostcardType extends AbstractType
 		$builder->add('title')
 				->add('location')
 				->add('body')
-				->add('picture');
+				->add('pictureFile','file');
 	}
 
 	public function getName()

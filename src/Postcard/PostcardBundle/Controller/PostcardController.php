@@ -43,6 +43,7 @@ class PostcardController extends Controller
 
             if($form->isValid()) {
                 $em = $this->getDoctrine()->getEntityManager();
+                $postcard->upload();
                 $em->persist($postcard);
                 $em->flush();
 
