@@ -13,9 +13,6 @@
     	<property name="body">
     		<constraint name="NotBlank" />
     	</property>
-    	<property name="picture">
-    		<constraint name="NotBlank" />
-    	</property>
     	<property name="pictureFile">
     		<constraint name="File">
     			<option name="maxSize">2M</option>
