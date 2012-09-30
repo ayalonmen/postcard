@@ -3,7 +3,7 @@
       xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                     http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-	<entity name="Postcard\PostcardBundle\Entity\Postcard" table="fos_users">
+	<entity name="Postcard\PostcardBundle\Entity\Postcard" table="postcards">
 		<id name="id" type="integer" column="id">
             <generator strategy="AUTO" />
         </id>

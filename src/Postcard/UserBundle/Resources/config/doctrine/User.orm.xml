@@ -2,7 +2,7 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                     http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-	<entity name="Postcard\UserBundle\Entity\User">
+	<entity name="Postcard\UserBundle\Entity\User" table="fos_users">
 		<id name="id" type="integer" column="id">
             <generator strategy="AUTO" />
         </id>
