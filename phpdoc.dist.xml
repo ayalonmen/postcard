@@ -29,5 +29,8 @@
     </transformations>
     <files>
         <directory>src</directory>
+        <ignore>*/Tests/*</ignore>
+        <ignore>*/DependencyInjection/*</ignore>
+        <ignore>*/DataFixtures/*</ignore>
     </files>
 </phpdoc>
