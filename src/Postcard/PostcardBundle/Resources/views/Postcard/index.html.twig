@@ -1,3 +1,6 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
 <h1>List of all Postcards</h1>
 {% for postcard in postcards %}
 	<ul>
@@ -9,3 +12,4 @@
 	</ul>
 {% endfor %}
 <a href="{{path('postcard_postcard_new')}}">Publish your Postcard</a>
+{% endblock %}

@@ -1,3 +1,6 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
 <h1>{{ postcard.title }}</h1>
 <p><img src="/{{ postcard.webPath }}" /></p>
 <p>
@@ -5,3 +8,4 @@
 	<span> Location: {{ postcard.location }} </span>
 </p>
 <a href="{{ path('postcard_postcard_index')}}">Back to index</a>
+{% endblock %}
