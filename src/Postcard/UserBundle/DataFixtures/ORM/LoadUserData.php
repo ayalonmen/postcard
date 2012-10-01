@@ -1,13 +1,14 @@
 <?php
 namespace Postcard\UserBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Postcard\UserBundle\Entity\User;
 
-class LoadUserData implements FixtureInterface, ContainerAwareInterface
+class LoadUserData extends AbstractFixture implements ContainerAwareInterface, OrderedFixtureInterface
 {
 	private $container;
 
@@ -44,5 +45,14 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
 		$user3->setEnabled(true);
 
 		$this->userManager->updateUser($user3);
+
+		$this->addReference('john', $user1);
+		$this->addReference('tony', $user2);
+		$this->addReference('tessa', $user3);
+	}
+
+	public function getOrder()
+	{
+		return 10;
 	}
 }
