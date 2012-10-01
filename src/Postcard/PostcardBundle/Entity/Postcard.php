@@ -169,4 +169,32 @@ class Postcard extends Base
         $this->picture = $this->pictureFile->getClientOriginalName();
         $this->pictureFile = null;
     }
+    /**
+     * @var Postcard\UserBundle\Entity\User
+     */
+    private $sender;
+
+
+    /**
+     * Set sender
+     *
+     * @param Postcard\UserBundle\Entity\User $sender
+     * @return Postcard
+     */
+    public function setSender(\Postcard\UserBundle\Entity\User $sender = null)
+    {
+        $this->sender = $sender;
+
+        return $this;
+    }
+
+    /**
+     * Get sender
+     *
+     * @return Postcard\UserBundle\Entity\User
+     */
+    public function getSender()
+    {
+        return $this->sender;
+    }
 }

@@ -7,15 +7,10 @@
 		<id name="id" type="integer" column="id">
             <generator strategy="AUTO" />
         </id>
-
 		<field name="title"  column="title"  type="string" length="120" />
-
 		<field name="location"  column="location"  type="string" length="120" />
-
 		<field name="body"  column="body"  type="text" />
-
 		<field name="picture" column="picture" type="string" length="200" />
-
+		<many-to-one field="sender" target-entity="\Postcard\UserBundle\Entity\User" inversed-by="postcards" />
 	</entity>
-
 </doctrine-mapping>

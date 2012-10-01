@@ -6,5 +6,6 @@
 		<id name="id" type="integer" column="id">
             <generator strategy="AUTO" />
         </id>
+        <one-to-many field="postcards" target-entity="\Postcard\PostcardBundle\Entity\Postcard" mapped-by="sender" />
 	</entity>
 </doctrine-mapping>
