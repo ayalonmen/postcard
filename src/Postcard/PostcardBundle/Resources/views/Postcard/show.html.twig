@@ -5,7 +5,8 @@
 <p><img src="/{{ postcard.webPath }}" /></p>
 <p>
 	{{ postcard.body }}
-	<span> Location: {{ postcard.location }} </span>
 </p>
+<p>Location: {{ postcard.location }}<p>
+<p>Send by: {{ postcard.sender }}</p>
 <a href="{{ path('postcard_postcard_index')}}">Back to index</a>
 {% endblock %}

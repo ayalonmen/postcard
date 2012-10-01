@@ -5,7 +5,7 @@
 {% for postcard in postcards %}
 	<ul>
 		<li><a href="{{ path('postcard_postcard_show', { 'id' : postcard.id })}}">{{ postcard.id }}</a></li>
-		<li>{{ postcard.title }}</li>
+		<li>{{ postcard.title }} <strong>send by: {{ postcard.sender }}</strong></li>
 		<li>{{ postcard.location }}</li>
 		<li>{{ postcard.body }}</li>
 		<li>{{ postcard.picture }}</li>
