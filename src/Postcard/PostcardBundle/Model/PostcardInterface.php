@@ -11,6 +11,8 @@
 
 namespace Postcard\PostcardBundle\Model;
 
+use FOS\UserBundle\Model\UserInterface;
+
 /**
  * Interface defining the basic properties (through getters/setters) that a Postcard should have
  *
@@ -80,4 +82,18 @@ interface PostcardInterface
 	 * @return string
 	 */
 	public function getPicture();
+
+	/**
+	 * Set the sender
+	 *
+	 * @param UserInterface $sender
+	 */
+	public function setSender(UserInterface $sender);
+
+	/**
+	 * Get the sender
+	 *
+	 * @return UserInterface
+	 */
+	public function getSender();
 }
