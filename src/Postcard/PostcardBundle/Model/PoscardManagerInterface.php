@@ -71,6 +71,14 @@ interface PostcardManagerInterface
 	public function findPostcards();
 
 	/**
+	 * Upload the picture
+	 * If the property $pictureFile is null, should not upload anything
+	 *
+	 * @param PostcardInterface $postcard
+	 */
+	public function uploadPicture(PostcardInterface $postcard);
+
+	/**
      * Returns the postcard's fully qualified class name.
      *
      * @return string

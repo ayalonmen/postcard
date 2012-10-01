@@ -23,7 +23,7 @@ interface PostcardInterface
 	/**
 	 * Return the id of the postcard
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public function getId();
 
@@ -96,4 +96,18 @@ interface PostcardInterface
 	 * @return UserInterface
 	 */
 	public function getSender();
+
+	/**
+	 * Get the URI of the picture
+	 *
+	 * @return string
+	 */
+	public function getPictureUri();
+
+	/**
+	 * Get the URL of the picture
+	 *
+	 * @return string
+	 */
+	public function getPictureUrl();
 }

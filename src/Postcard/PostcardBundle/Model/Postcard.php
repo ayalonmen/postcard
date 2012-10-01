@@ -59,6 +59,7 @@ abstract class Postcard implements PostcardInterface
      * Set title
      *
      * @param string $title
+     *
      * @return PostcardInterface
      */
     public function setTitle($title)
@@ -82,6 +83,7 @@ abstract class Postcard implements PostcardInterface
      * Set location
      *
      * @param string $location
+     *
      * @return PostcardInterface
      */
     public function setLocation($location)
@@ -105,6 +107,7 @@ abstract class Postcard implements PostcardInterface
      * Set body
      *
      * @param string $body
+     *
      * @return PostcardInterface
      */
     public function setBody($body)
@@ -128,6 +131,7 @@ abstract class Postcard implements PostcardInterface
      * Set picture's link
      *
      * @param string $picture
+     *
      * @return PostcardInterface
      */
     public function setPicture($picture)
@@ -173,7 +177,8 @@ abstract class Postcard implements PostcardInterface
      * Set sender
      *
      * @param UserInterface $sender
-     * @return Postcard
+     *
+     * @return PostcardInterface
      */
     public function setSender(UserInterface $sender = null)
     {
@@ -191,4 +196,24 @@ abstract class Postcard implements PostcardInterface
     {
         return $this->sender;
     }
+
+    /**
+	 * Get the URI of the picture
+	 *
+	 * @return string
+	 */
+	public function getPictureUri()
+	{
+		return $this->picture;
+	}
+
+	/**
+	 * Get the URL of the picture
+	 *
+	 * @return string
+	 */
+	public function getPictureUrl()
+	{
+		return $this->picture;
+	}
 }
