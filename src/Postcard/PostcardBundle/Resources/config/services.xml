@@ -4,17 +4,17 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <!--
     <parameters>
-        <parameter key="postcard_postcard.example.class">Postcard\PostcardBundle\Example</parameter>
+        <parameter key="postcard_postcard.postcard_manager.class">Postcard\PostcardBundle\Entity\PostcardManager</parameter>
+        <parameter key="postcard_postcard.postcard.class">Postcard\PostcardBundle\Entity\Postcard</parameter>
     </parameters>
 
     <services>
-        <service id="postcard_postcard.example" class="%postcard_postcard.example.class%">
-            <argument type="service" id="service_id" />
-            <argument>plain_value</argument>
-            <argument>%parameter_name%</argument>
+        <service id="postcard_postcard.postcard_manager" class="%postcard_postcard.postcard_manager.class%">
+            <argument type="service" id="postcard_postcard.entity_manager" />
+            <argument>%postcard_postcard.postcard.class%</argument>
         </service>
+        <service id="postcard_postcard.entity_manager" factory-service="doctrine" factory-method="getManager" class="Doctrine\ORM\EntityManager" />
     </services>
-    -->
+
 </container>
