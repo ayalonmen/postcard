@@ -11,23 +11,73 @@
 
 namespace Postcard\PostcardBundle\Model;
 
+/**
+ * Interface defining the basic properties (through getters/setters) that a Postcard should have
+ *
+ * @author Jonathan Bensaid <john@bensaidj.com>
+ */
 interface PostcardInterface
 {
-	function getId();
+	/**
+	 * Return the id of the postcard
+	 *
+	 * @return int
+	 */
+	public function getId();
 
-	function setTitle($tile);
+	/**
+	 * Set the title
+	 *
+	 * @param string title
+	 */
+	public function setTitle($tile);
 
-	function getTitle();
+	/**
+	 * Get the title
+	 *
+	 * @return string
+	 */
+	public function getTitle();
 
-	function setLocation($location);
+	/**
+	 * Set the location
+	 *
+	 * @param string $location
+	 */
+	public function setLocation($location);
 
-	function getLocation();
+	/**
+	 * Get the location
+	 *
+	 * @return string
+	 */
+	public function getLocation();
 
-	function setBody($body);
+	/**
+	 * Set the body
+	 *
+	 * @param string $body
+	 */
+	public function setBody($body);
 
-	function getBody();
+	/**
+	 * Get the body
+	 *
+	 * @return string
+	 */
+	public function getBody();
 
-	function setPicture($picture);
+	/**
+	 * Set the picture's url
+	 *
+	 * @param string $picture
+	 */
+	public function setPicture($picture);
 
-	function getPicture();
+	/**
+	 * Get the picture's url
+	 *
+	 * @return string
+	 */
+	public function getPicture();
 }
