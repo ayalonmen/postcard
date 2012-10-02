@@ -24,18 +24,15 @@ abstract class PostcardManager implements PostcardManagerInterface
 	/**
 	 * Create a basic postcard instance
 	 *
-	 * @param UserInterface $sender optional A user can be defined as the sender of the postcard
+	 * @param UserInterface $sender The user defined as the sender of the postcard
 	 *
 	 * @return PostcardInterface
 	 */
-	public function createPostcard(UserInterface $sender = null)
+	public function createPostcard(UserInterface $sender)
 	{
 		$class = $this->getClass();
 		$instance = new $class;
-
-		if ($sender !== null) {
-			$instance->setSender($sender);
-		}
+		$instance->setSender($sender);
 
 		return $instance;
 	}
@@ -79,8 +76,9 @@ abstract class PostcardManager implements PostcardManagerInterface
 	{
 		$senderUsername = $postcard->getSender()->getUsername();
 
-		if ($pictureExtension = $postcard->getPictureFile()->getClientMimeType()) {
-			return md5($senderUsername . time()) . $pictureExtension;
+		//Make the assumption that the Mime is of type image/xxx
+		if ($pictureExtension = substr($postcard->getPictureFile()->getClientMimeType(), 6)) {
+			return md5($senderUsername . time()) . '.' . $pictureExtension;
 		}
 
 		return md5($senderUsername . time());
@@ -93,6 +91,6 @@ abstract class PostcardManager implements PostcardManagerInterface
 	 */
 	protected function getUploadDir()
 	{
-		return __DIR__ . '/../../../../web/uploads/postcards/'
+		return __DIR__ . '/../../../../web/uploads/postcards/';
 	}
 }

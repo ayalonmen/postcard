@@ -26,35 +26,4 @@ class Postcard extends Base
     {
         return $this->id;
     }
-
-    public function getUploadRootDir()
-    {
-        return __DIR__ . "/../../../../web/" . $this->getUploadDir();
-    }
-
-    public function getUploadDir()
-    {
-        return 'uploads/postcards/';
-    }
-
-    public function getAbsolutePath()
-    {
-        return null === $this->picture ? null : $this->getUploadRootDir() . $this->picture;
-    }
-
-    public function getWebPath()
-    {
-        return null === $this->picture ? null : $this->getUploadDir() . $this->picture;
-    }
-
-    public function upload()
-    {
-        if ($this->pictureFile === null) {
-            return;
-        }
-
-        $this->pictureFile->move($this->getUploadRootDir(), $this->pictureFile->getClientOriginalName());
-        $this->picture = $this->pictureFile->getClientOriginalName();
-        $this->pictureFile = null;
-    }
 }

@@ -30,11 +30,12 @@ class PostcardManager extends BaseManager
 	/**
 	 * @var The Postcard Repository
 	 */
-	protecte $repository;
+	protected $repository;
 
 	public function __construct(EntityManager $em, $class)
 	{
 		$this->em = $em;
+		$this->repository = $em->getRepository($class);
 		$this->class = $class;
 	}
 
@@ -79,6 +80,18 @@ class PostcardManager extends BaseManager
 	public function findPostcardsBy(array $criteria)
 	{
 		return $this->repository->findBy($criteria);
+	}
+
+	/**
+	 * Find one postcard by id
+	 *
+	 * @param interger $id
+	 *
+	 * @return PostcardInterface
+	 */
+	public function findPostcardById($id)
+	{
+		return $this->repository->findOneById($id);
 	}
 
 	/**

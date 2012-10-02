@@ -30,8 +30,8 @@ class PostcardController extends Controller
      */
     public function indexAction()
     {
-    	$em = $this->getDoctrine()->getEntityManager();
-    	$postcards = $em->getRepository('PostcardPostcardBundle:Postcard')->findAll();
+    	$postcardManager = $this->get('postcard_postcard.postcard_manager');
+    	$postcards = $postcardManager->findPostcards();
 
     	$format = $this->getRequest()->getRequestFormat();
 
@@ -49,8 +49,8 @@ class PostcardController extends Controller
      */
     public function showAction($id)
     {
-    	$em = $this->getDoctrine()->getEntityManager();
-    	$postcard = $em->getRepository('PostcardPostcardBundle:Postcard')->findOneById($id);
+    	$postcardManager = $this->get('postcard_postcard.postcard_manager');
+    	$postcard = $postcardManager->findPostcardById($id);
 
     	$format = $this->getRequest()->getRequestFormat();
 
@@ -68,17 +68,16 @@ class PostcardController extends Controller
      */
     public function newAction(Request $request)
     {
-        $postcard = new Postcard();
+        $user = $this->get('security.context')->getToken()->getUser();
+        $postcardManager = $this->get('postcard_postcard.postcard_manager');
+        $postcard = $postcardManager->createPostcard($user);
         $form = $this->createForm(new PostcardType(), $postcard);
 
         if ($request->getMethod() == 'POST') {
             $form->bind($request);
 
             if($form->isValid()) {
-                $em = $this->getDoctrine()->getEntityManager();
-                $postcard->upload();
-                $em->persist($postcard);
-                $em->flush();
+                $postcardManager->updatePostcard($postcard);
 
                 return $this->redirect($this->generateUrl('postcard_postcard_show', array(
                     'id'=>$postcard->getId(),

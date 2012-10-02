@@ -204,7 +204,7 @@ abstract class Postcard implements PostcardInterface
 	 */
 	public function getPictureUri()
 	{
-		return $this->picture;
+		return '/uploads/postcards/' . $this->picture;
 	}
 
 	/**
@@ -214,6 +214,6 @@ abstract class Postcard implements PostcardInterface
 	 */
 	public function getPictureUrl()
 	{
-		return $this->picture;
+		return 'http://local.postcard.com' . $this->getPictureUri();
 	}
 }

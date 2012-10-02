@@ -2,11 +2,12 @@
 
 {% block body %}
 <h1>{{ postcard.title }}</h1>
-<p><img src="/{{ postcard.webPath }}" /></p>
+<p><img src="{{ postcard.pictureUri }}" /></p>
 <p>
 	{{ postcard.body }}
 </p>
 <p>Location: {{ postcard.location }}<p>
 <p>Send by: {{ postcard.sender }}</p>
+<p>External link: {{ postcard.pictureUrl }}</p>
 <a href="{{ path('postcard_postcard_index')}}">Back to index</a>
 {% endblock %}
