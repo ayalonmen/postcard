@@ -68,6 +68,17 @@ abstract class PostcardManager implements PostcardManagerInterface
 	}
 
 	/**
+	 * Remove the picture from the server
+	 *
+	 * @param PostcardInterface $postcard
+	 */
+	public function deletePicture(PostcardInterface $postcard)
+	{
+		$filename = $this->getUploadDir() . $postcard->getPicture();
+		unlink($filename);
+	}
+
+	/**
 	 * Generate a unique name for the uploaded picture
 	 *
 	 * @param PostcardInterface $postcard

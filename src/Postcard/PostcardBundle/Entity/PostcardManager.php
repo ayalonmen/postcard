@@ -63,9 +63,10 @@ class PostcardManager extends BaseManager
 	 */
 	public function deletePostcard(PostcardInterface $postcard, $flush = true)
 	{
+		$this->deletePicture($postcard);
 		$this->em->remove($postcard);
 
-		if ($flus) {
+		if ($flush) {
 			$this->em->flush();
 		}
 	}

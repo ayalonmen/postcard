@@ -141,4 +141,30 @@ class PostcardController extends Controller
             'postcard' => $postcard,
         ));
     }
+
+    /**
+     * Delete a postcard
+     *
+     * Only the Sender of the postcard can delete it
+     *
+     * @param integer $id The id of the Postcard object
+     */
+    public function deleteAction($id)
+    {
+        if (false === $this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            throw new AccessDeniedException();
+        }
+
+        $user = $this->get('security.context')->getToken()->getUser();
+        $postcardManager = $this->get('postcard_postcard.postcard_manager');
+        $postcard = $postcardManager->findPostcardById($id);
+
+        if (!$postcard->isSender($user)) {
+            throw new AccessDeniedHttpException();
+        }
+
+        $postcardManager->deletePostcard($postcard);
+
+        return $this->redirect($this->generateUrl('postcard_postcard_index'));
+    }
 }

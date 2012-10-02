@@ -88,6 +88,13 @@ interface PostcardManagerInterface
 	public function uploadPicture(PostcardInterface $postcard);
 
 	/**
+	 * Remove the picture from the server
+	 *
+	 * @param PostcardInterface $postcard
+	 */
+	public function deletePicture(PostcardInterface $postcard);
+
+	/**
      * Returns the postcard's fully qualified class name.
      *
      * @return string
