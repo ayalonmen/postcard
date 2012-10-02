@@ -14,6 +14,7 @@ namespace Postcard\PostcardBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 use Postcard\PostcardBundle\Form\Type\PostcardNewType;
 use Postcard\PostcardBundle\Form\Type\PostcardEditType;
@@ -69,6 +70,10 @@ class PostcardController extends Controller
      */
     public function newAction()
     {
+        if (false === $this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            throw new AccessDeniedException();
+        }
+
         $user = $this->get('security.context')->getToken()->getUser();
         $request = $this->get('request');
 
@@ -103,6 +108,10 @@ class PostcardController extends Controller
      */
     public function editAction($id)
     {
+        if (false === $this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            throw new AccessDeniedException();
+        }
+
         $user = $this->get('security.context')->getToken()->getUser();
         $request = $this->get('request');
 
