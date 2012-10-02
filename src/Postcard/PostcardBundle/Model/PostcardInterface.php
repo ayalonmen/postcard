@@ -110,4 +110,13 @@ interface PostcardInterface
 	 * @return string
 	 */
 	public function getPictureUrl();
+
+	/**
+	 * Check the user is the sender
+	 *
+	 * @param UserInterface $user
+	 *
+	 * @return bool
+	 */
+	public function isSender(UserInterface $user);
 }

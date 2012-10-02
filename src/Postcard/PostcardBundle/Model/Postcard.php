@@ -216,4 +216,16 @@ abstract class Postcard implements PostcardInterface
 	{
 		return 'http://local.postcard.com' . $this->getPictureUri();
 	}
+
+    /**
+     * Check the user is the sender
+     *
+     * @param UserInterface $user
+     *
+     * @return bool
+     */
+    public function isSender(UserInterface $user)
+    {
+        return $this->sender === $user;
+    }
 }

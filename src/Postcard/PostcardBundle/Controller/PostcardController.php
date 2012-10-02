@@ -13,6 +13,8 @@ namespace Postcard\PostcardBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+
 use Postcard\PostcardBundle\Form\Type\PostcardType;
 use Postcard\PostcardBundle\Entity\Postcard;
 
@@ -62,15 +64,16 @@ class PostcardController extends Controller
     /**
      * Create a new Postcard
      *
-     * Display the form associated with a new Postcard with a GET Request or treat the persistence of the Postcard with a POST Reques
-     *
-     * @param Request $request    The request object sent by the client
+     * Display the form associated with a new Postcard with a GET Request or treat the persistence of the Postcard with a POST Request
      */
-    public function newAction(Request $request)
+    public function newAction()
     {
         $user = $this->get('security.context')->getToken()->getUser();
+        $request = $this->get('request');
+
         $postcardManager = $this->get('postcard_postcard.postcard_manager');
         $postcard = $postcardManager->createPostcard($user);
+
         $form = $this->createForm(new PostcardType(), $postcard);
 
         if ($request->getMethod() == 'POST') {
@@ -87,6 +90,45 @@ class PostcardController extends Controller
 
         return $this->render('PostcardPostcardBundle:Postcard:new.html.twig',array(
             'form'=>$form->createView(),
+        ));
+    }
+
+    /**
+     * Edit a postcard
+     *
+     * Only the Sender of the postcard can edit it
+     *
+     * @param integer $id The id of the Postcard object
+     */
+    public function editAction($id)
+    {
+        $user = $this->get('security.context')->getToken()->getUser();
+        $request = $this->get('request');
+
+        $postcardManager = $this->get('postcard_postcard.postcard_manager');
+        $postcard = $postcardManager->findPostcardById($id);
+
+        $form = $this->createForm(new PostcardType(), $postcard);
+
+        if (!$postcard->isSender($user)) {
+            throw new AccessDeniedHttpException();
+        }
+
+        if ($request->getMethod() == 'POST') {
+            $form->bind($request);
+
+            if ($form->isValid()) {
+                $postcardManager->updatePostcard($postcard);
+
+                return $this->redirect($this->generateUrl('postcard_postcard_show', array(
+                    'id'=>$postcard->getId(),
+                )));
+            }
+        }
+
+        return $this->render('PostcardPostcardBundle:Postcard:edit.html.twig', array(
+            'form' => $form->createView(),
+            'postcard' => $postcard,
         ));
     }
 }
