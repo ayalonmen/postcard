@@ -5,16 +5,44 @@
 
     <class name="Postcard\PostcardBundle\Entity\Postcard">
     	<property name="title">
-    		<constraint name="NotBlank" />
+    		<constraint name="NotBlank">
+                <option name="groups">
+                    <value>new</value>
+                    <value>edit</value>
+                </option>
+            </constraint>
     	</property>
     	<property name="location">
-    		<constraint name="NotBlank" />
+    		<constraint name="NotBlank">
+                <option name="groups">
+                    <value>new</value>
+                    <value>edit</value>
+                </option>
+            </constraint>
     	</property>
     	<property name="body">
-    		<constraint name="NotBlank" />
+    		<constraint name="NotBlank">
+                <option name="groups">
+                    <value>new</value>
+                    <value>edit</value>
+                </option>
+            </constraint>
     	</property>
     	<property name="pictureFile">
+            <constraint name="NotNull" >
+                <option name="groups">
+                    <value>new</value>
+                </option>
+            </constraint>
+            <constraint name="Null">
+                <option name="groups">
+                    <value>edit</value>
+                </option>
+            </constraint>
     		<constraint name="File">
+                <option name="groups">
+                    <value>new</value>
+                </option>
     			<option name="maxSize">2M</option>
     			<option name="mimeTypes">
     				<value>image/jpg</value>

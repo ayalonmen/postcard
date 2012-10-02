@@ -13,8 +13,9 @@ namespace Postcard\PostcardBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class PostcardType extends AbstractType
+class PostcardNewType extends AbstractType
 {
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
@@ -26,6 +27,13 @@ class PostcardType extends AbstractType
 
 	public function getName()
 	{
-		return 'postcard';
+		return 'postcard_new';
+	}
+
+	public function setDefaultOptions(OptionsResolverInterface $resolver)
+	{
+		$resolver->setDefaults(array(
+			'validation_groups' => array('new'),
+		));
 	}
 }

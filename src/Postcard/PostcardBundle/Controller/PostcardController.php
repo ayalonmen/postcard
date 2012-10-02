@@ -15,7 +15,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
-use Postcard\PostcardBundle\Form\Type\PostcardType;
+use Postcard\PostcardBundle\Form\Type\PostcardNewType;
+use Postcard\PostcardBundle\Form\Type\PostcardEditType;
 use Postcard\PostcardBundle\Entity\Postcard;
 
 /**
@@ -74,7 +75,7 @@ class PostcardController extends Controller
         $postcardManager = $this->get('postcard_postcard.postcard_manager');
         $postcard = $postcardManager->createPostcard($user);
 
-        $form = $this->createForm(new PostcardType(), $postcard);
+        $form = $this->createForm(new PostcardNewType(), $postcard);
 
         if ($request->getMethod() == 'POST') {
             $form->bind($request);
@@ -108,7 +109,7 @@ class PostcardController extends Controller
         $postcardManager = $this->get('postcard_postcard.postcard_manager');
         $postcard = $postcardManager->findPostcardById($id);
 
-        $form = $this->createForm(new PostcardType(), $postcard);
+        $form = $this->createForm(new PostcardEditType(), $postcard);
 
         if (!$postcard->isSender($user)) {
             throw new AccessDeniedHttpException();
