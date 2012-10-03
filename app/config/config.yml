@@ -63,4 +63,12 @@ fos_user:
     firewall_name: main
     user_class: Postcard\UserBundle\Entity\User
 
+fos_facebook:
+      file:   %kernel.root_dir%/../vendor/facebook/php-sdk/src/base_facebook.php
+      alias:  facebook
+      app_id: %facebook_appid%
+      secret: %facebook_secret%
+      cookie: true
+      permissions: [email, user_birthday, user_location]
+
 postcard_postcard: ~
