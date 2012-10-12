@@ -6,4 +6,5 @@ app/logs/*
 vendor
 composer.phar
 app/config/parameters.yml
+app/config/parameters.prod.yml
 phpdoc/
