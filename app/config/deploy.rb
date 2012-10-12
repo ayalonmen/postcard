@@ -15,7 +15,7 @@ set :permission_method, :acl
 
 # Set some paths to be shared between versions
 set :shared_files,    ["app/config/parameters.yml"]
-set :shared_children, [app_path + "/logs", web_path + "/uploads", "vendor"]
+set :shared_children, ["app/logs", "app/cache" , "web/uploads", "vendor"]
 
 # Git Repository
 set :repository,  "git@github.com:johnbenz13/postcard.git"
@@ -42,10 +42,10 @@ logger.level = Logger::MAX_LEVEL
 # Deploy the prod parameter.yml
 task :upload_parameters do
   origin_file = "app/config/parameters.prod.yml"
-  destination_file = latest_release + "/app/config/parameters.yml"
+  destination_file = shared_path + "/app/config/parameters.yml"
 
   try_sudo "mkdir -p #{File.dirname(destination_file)}"
   top.upload(origin_file, destination_file)
 end
 
-before "deploy:share_childs", "upload_parameters"
+after "deploy:setup", "upload_parameters"
