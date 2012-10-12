@@ -6,9 +6,9 @@
 		<id name="id" type="integer" column="id">
             <generator strategy="AUTO" />
         </id>
-        <field name="facebookId" type="string"  />
-        <field name="lastname" type="string" length="255" />
-        <field name="firstname" type="string" length="255" />
+        <field name="facebookId" type="string"  nullable="true" />
+        <field name="lastname" type="string" length="255" nullable="true" />
+        <field name="firstname" type="string" length="255" nullable="true" />
         <one-to-many field="postcards" target-entity="\Postcard\PostcardBundle\Entity\Postcard" mapped-by="sender" />
 	</entity>
 </doctrine-mapping>

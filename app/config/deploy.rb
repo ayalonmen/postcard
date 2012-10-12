@@ -20,7 +20,7 @@ set :shared_children, ["app/logs", "app/cache" , "web/uploads", "vendor"]
 # Git Repository
 set :repository,  "git@github.com:johnbenz13/postcard.git"
 set :scm,         :git
-set :branch, "master"
+set :branch, "dev"
 ssh_options[:forward_agent] = true #Use the ssh key on local to connect to github
 set :deploy_via,	:remote_cache #Keep a copy of git repo on prod and fetch changes only
 
