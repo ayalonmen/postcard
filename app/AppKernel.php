@@ -27,6 +27,7 @@ class AppKernel extends Kernel
             new Postcard\UserBundle\PostcardUserBundle(),
             new FOS\FacebookBundle\FOSFacebookBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Postcard\PublicBundle\PostcardPublicBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

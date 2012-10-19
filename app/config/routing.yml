@@ -1,3 +1,7 @@
+postcard_public:
+    resource: "@PostcardPublicBundle/Resources/config/routing.xml"
+    prefix:   /
+
 postcard_user:
     resource: "@PostcardUserBundle/Resources/config/routing.xml"
     prefix:   /
