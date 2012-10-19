@@ -2,6 +2,8 @@
 
 {% block body %}
 <h1>{{ postcard.title }}</h1>
+<p>Created on {{ postcard.created|date('d-m-y') }} </p>
+<p>Updated on {{ postcard.updated|date('d-m-y') }} </p>
 <p><img src="{{ postcard.pictureUri }}" /></p>
 <p>
 	{{ postcard.body }}
