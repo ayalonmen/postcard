@@ -15,7 +15,7 @@ set :permission_method, :acl
 
 # Set some paths to be shared between versions
 set :shared_files,    ["app/config/parameters.yml"]
-set :shared_children, ["app/logs", "app/cache" , "web/uploads", "vendor"]
+set :shared_children, ["app/logs", "app/cache" , "web/uploads", "vendor", "app/DoctrineMigrations"]
 
 # Git Repository
 set :repository,  "git@github.com:johnbenz13/postcard.git"
@@ -29,6 +29,11 @@ set :model_manager, "doctrine"
 
 # Vendors
 set :use_composer, true
+#set :composer_bin, "/usr/local/bin/composer"
+
+# Assets
+set :assets_install,        true
+set :assets_symlinks,       true
 
 role :web,        domain                         # Your HTTP server, Apache/etc
 role :app,        domain                         # This may be the same as your `Web` server
