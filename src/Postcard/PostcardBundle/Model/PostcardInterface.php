@@ -30,7 +30,8 @@ interface PostcardInterface
 	/**
 	 * Set the title
 	 *
-	 * @param string title
+	 * @param string $title
+	 * @return PostcardInterface
 	 */
 	public function setTitle($tile);
 
@@ -45,6 +46,7 @@ interface PostcardInterface
 	 * Set the location
 	 *
 	 * @param string $location
+	 * @return PostcardInterface
 	 */
 	public function setLocation($location);
 
@@ -59,6 +61,7 @@ interface PostcardInterface
 	 * Set the body
 	 *
 	 * @param string $body
+	 * @return PostcardInterface
 	 */
 	public function setBody($body);
 
@@ -70,23 +73,40 @@ interface PostcardInterface
 	public function getBody();
 
 	/**
-	 * Set the picture's url
+	 * Set the picture's filename
 	 *
 	 * @param string $picture
+	 * @return PostcardInterface
 	 */
 	public function setPicture($picture);
 
 	/**
-	 * Get the picture's url
+	 * Get the picture's filename
 	 *
 	 * @return string
 	 */
 	public function getPicture();
 
 	/**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return PostcardInterface
+     */
+    public function setCreated($created);
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated();
+
+	/**
 	 * Set the sender
 	 *
 	 * @param UserInterface $sender
+	 * @return PostcardInterface
 	 */
 	public function setSender(UserInterface $sender);
 
@@ -115,7 +135,6 @@ interface PostcardInterface
 	 * Check the user is the sender
 	 *
 	 * @param UserInterface $user
-	 *
 	 * @return bool
 	 */
 	public function isSender(UserInterface $user);

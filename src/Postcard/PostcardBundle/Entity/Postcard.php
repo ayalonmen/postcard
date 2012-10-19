@@ -11,12 +11,68 @@
 
 namespace Postcard\PostcardBundle\Entity;
 
-use Postcard\PostcardBundle\Model\Postcard as Base;
+use Postcard\PostcardBundle\Model\PostcardInterface;
 use FOS\UserBundle\Model\UserInterface;
 
-class Postcard extends Base
+class Postcard Implements PostcardInterface
 {
+    /**
+     * The id in the DB
+     *
+     * @var integer $id
+     */
 	protected $id;
+
+    /**
+     * Title of the Postcard
+     *
+     * @var string $title
+     */
+    protected $title;
+
+    /**
+     * The place where the Postcard was taken
+     *
+     * @var string $location
+     */
+    protected $location;
+
+    /**
+     * A message about the Postcard published by the sender
+     *
+     * @var string $body
+     */
+    protected $body;
+
+    /**
+     * The picture's filename
+     *
+     * @var string $picture
+     */
+    protected $picture;
+
+    /**
+     * The picture's data file
+     * This is just to be used in forms, it shouldn't be persisted
+     *
+     * @var data $pictureFile
+     */
+    protected $pictureFile;
+
+    /**
+     * @var \DateTime $created
+     */
+    protected $created;
+
+    /**
+     * @var \DateTime $updated
+     */
+    protected $updated;
+
+    /**
+     * @var FOS\UserBundle\Model\UserInterface
+     */
+    protected $sender;
 
     /**
      * Get id
@@ -27,37 +83,12 @@ class Postcard extends Base
     {
         return $this->id;
     }
-    /**
-     * @var string $title
-     */
-    protected $title;
-
-    /**
-     * @var string $location
-     */
-    protected $location;
-
-    /**
-     * @var string $body
-     */
-    protected $body;
-
-    /**
-     * @var string $picture
-     */
-    protected $picture;
-
-    /**
-     * @var FOS\UserBundle\Model\UserInterface
-     */
-    protected $sender;
-
 
     /**
      * Set title
      *
      * @param string $title
-     * @return Postcard
+     * @return PostcardInterface
      */
     public function setTitle($title)
     {
@@ -80,7 +111,7 @@ class Postcard extends Base
      * Set location
      *
      * @param string $location
-     * @return Postcard
+     * @return PostcardInterface
      */
     public function setLocation($location)
     {
@@ -103,7 +134,7 @@ class Postcard extends Base
      * Set body
      *
      * @param string $body
-     * @return Postcard
+     * @return PostcardInterface
      */
     public function setBody($body)
     {
@@ -123,10 +154,10 @@ class Postcard extends Base
     }
 
     /**
-     * Set picture
+     * Set picture's link
      *
      * @param string $picture
-     * @return Postcard
+     * @return PostcardInterface
      */
     public function setPicture($picture)
     {
@@ -136,13 +167,35 @@ class Postcard extends Base
     }
 
     /**
-     * Get picture
+     * Get picture's link
      *
      * @return string
      */
     public function getPicture()
     {
         return $this->picture;
+    }
+
+    /**
+     * Get the picture's data
+     *
+     * @return data
+     */
+    public function getPictureFile()
+    {
+        return $this->pictureFile;
+    }
+
+    /**
+     * Set the picture's data
+     *
+     * @return PostcardInterface
+     */
+    public function setPictureFile($pictureFile)
+    {
+        $this->pictureFile = $pictureFile;
+
+        return $this;
     }
 
     /**
@@ -166,5 +219,82 @@ class Postcard extends Base
     public function getSender()
     {
         return $this->sender;
+    }
+
+    /**
+     * Check the user is the sender
+     *
+     * @param UserInterface $user
+     * @return bool
+     */
+    public function isSender(UserInterface $user)
+    {
+        return $this->sender === $user;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Postcard
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return Postcard
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * Get the URI of the picture
+     *
+     * @return string
+     */
+    public function getPictureUri()
+    {
+        return '/uploads/postcards/' . $this->picture;
+    }
+
+    /**
+     * Get the URL of the picture
+     *
+     * @return string
+     */
+    public function getPictureUrl()
+    {
+        return 'http://local.postcard.com' . $this->getPictureUri();
     }
 }

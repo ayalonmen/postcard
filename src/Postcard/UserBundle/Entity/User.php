@@ -7,27 +7,37 @@ use FOS\UserBundle\Entity\User as BaseUser;
 class User extends BaseUser
 {
     /**
-     * @var Database id
+     * @var Database $id
      */
 	protected $id;
 
     /**
-     * @var Facebook id if linked account
+     * @var $facebookId Facebook id if linked account
      */
     protected $facebookId;
 
     /**
-     * @var User's firstname
+     * @var $firstname User's firstname
      */
     protected $firstname;
 
     /**
-     * @var User's lastname
+     * @var $lastname User's lastname
      */
     protected $lastname;
 
     /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
+     * @var \DateTime $created
+     */
+    protected $created;
+
+    /**
+     * @var \DateTime $updated
+     */
+    protected $updated;
+
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection A collection of Postcards
      */
     protected $postcards;
 
@@ -172,5 +182,51 @@ class User extends BaseUser
     public function getFirstname()
     {
         return $this->firstname;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return User
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return User
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
     }
 }

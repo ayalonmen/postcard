@@ -1,4 +1,5 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+      xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                     http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
@@ -9,6 +10,12 @@
         <field name="facebookId" type="string"  nullable="true" />
         <field name="lastname" type="string" length="255" nullable="true" />
         <field name="firstname" type="string" length="255" nullable="true" />
+        <field name="created" type="datetime">
+            <gedmo:timestampable on="create"/>
+        </field>
+        <field name="updated" type="datetime">
+            <gedmo:timestampable on="update"/>
+        </field>
         <one-to-many field="postcards" target-entity="\Postcard\PostcardBundle\Entity\Postcard" mapped-by="sender" />
 	</entity>
 </doctrine-mapping>

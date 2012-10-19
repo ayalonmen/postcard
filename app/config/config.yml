@@ -71,4 +71,10 @@ fos_facebook:
       cookie: true
       permissions: [email, user_birthday, user_location]
 
+stof_doctrine_extensions:
+    default_locale: %locale%
+    orm:
+        default:
+            timestampable: true
+
 postcard_postcard: ~
