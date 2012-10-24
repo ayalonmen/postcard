@@ -30,7 +30,8 @@ security:
                 login_path: /login
                 check_path: /facebook_check
                 provider: my_facebook_provider
-            logout: true
+            logout:
+                handlers: ["fos_facebook.logout_handler"]
             anonymous: true
 
     access_control:

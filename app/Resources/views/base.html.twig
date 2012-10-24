@@ -7,6 +7,8 @@
           <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen" />
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     </head>
     <body>
       {% include ':Component:navbar.html.twig' %}
@@ -20,10 +22,24 @@
           function onFbInit() {
               if (typeof(FB) != 'undefined' && FB != null ) {
                   FB.Event.subscribe('auth.statusChange', function(response) {
+                    if (response.session || response.authResponse) {
                       setTimeout(goLogIn, 500);
+                    } else {
+                      window.location.href = "{{ path('_security_logout') }}";
+                    }
                   });
+                  {% if not is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    FB.getLoginStatus(function(response) {
+                      if ('response' === 'connected') {
+                        window.location.href = "{{ path('_facebook_check') }}"
+                      }
+                    });
+                  {% endif %}
               }
           }
+          $(document).ready(function(){
+
+          });
         </script>
     </body>
 </html>
