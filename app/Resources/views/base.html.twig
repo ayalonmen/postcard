@@ -9,33 +9,7 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-      <div class="navbar navbar-inverse navbar-static-top">
-          <div class="navbar-inner">
-              <ul class="nav">
-                {% set current_route = app.request.attributes.get('_route') %}
-                <li {% if current_route == 'postcard_public_homepage' %} class="active" {% endif %}><a href="{{ path('postcard_public_homepage') }}">Home</a></li>
-                <li class="divider-vertical"></li>
-                <li {% if current_route == 'postcard_postcard_index' %} class="active" {% endif %}><a href="{{ path('postcard_postcard_index') }}">Postcards</a></li>
-                <li class="divider-vertical"></li>
-                {% if not is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                <li {% if current_route == 'fos_user_registration_register' %} class="active" {% endif %}><a href="{{ path('fos_user_registration_register') }}">Register</a></li>
-                {% endif %}
-              </ul>
-              <form class="navbar-search pull-right">
-                <input type="text" class="search-query" placeholder="Search">
-              </form>
-              <ul class="nav pull-right">
-                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
-                {% else %}
-                {{ facebook_initialize({'xfbml': true, 'fbAsyncInit': 'onFbInit();'}) }}
-                <li {% if current_route == 'fos_user_security_login' %} class="active" {% endif %}><a href="{{ path('fos_user_security_login') }}">Login</a></li>
-                <li class="divider-vertical"></li>
-                <li><a href="#">{{ facebook_login_button({'autologoutlink': true}) }}</a></li>
-                {% endif %}
-              </ul>
-          </div>
-      </div>
+      {% include ':Component:navbar.html.twig' %}
       {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
         <script>
