@@ -5,12 +5,13 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
           <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+          <link href="/css/main.css" rel="stylesheet" media="screen" />
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     </head>
-    <body>
+    <body {% if app.request.attributes.get('_route') == 'postcard_public_homepage' %} class="homepage" {% endif %}>
       {% include ':Component:navbar.html.twig' %}
       {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
@@ -31,7 +32,10 @@
                   {% if not is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                     FB.getLoginStatus(function(response) {
                       if ('response' === 'connected') {
+                        // User logged into FB and app authorized
                         window.location.href = "{{ path('_facebook_check') }}"
+                      } else if('response' === 'not_authorized') {
+                        // User logged into FB only
                       }
                     });
                   {% endif %}
