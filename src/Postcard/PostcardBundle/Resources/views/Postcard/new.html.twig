@@ -1,11 +1,10 @@
-{% extends '::base.html.twig' %}
+{% extends 'PostcardPostcardBundle::base.html.twig' %}
 
-{% block body %}
+{% block content %}
 <h1>Publish a new Postcard</h1>
 <form action="{{ path('postcard_postcard_new') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
 
-    <input type="submit" />
+    <input class="btn btn-success" type="submit" />
 </form>
-<a href="{{path('postcard_postcard_index')}}">Back to the index</a>
 {% endblock %}

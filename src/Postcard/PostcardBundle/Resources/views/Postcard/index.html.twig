@@ -1,6 +1,6 @@
-{% extends '::base.html.twig' %}
+{% extends 'PostcardPostcardBundle::base.html.twig' %}
 
-{% block body %}
+{% block content %}
 <h1>List of all Postcards</h1>
 {% for postcard in postcards %}
 	<ul>
@@ -10,10 +10,10 @@
 		<li>{{ postcard.body }}</li>
 		<li>{{ postcard.picture }}</li>
 		{% if is_granted('IS_AUTHENTICATED_REMEMBERED') and postcard.isSender(app.user) %}
-		<li><a href="{{ path('postcard_postcard_edit', { 'id' : postcard.id }) }}">Edit</a></li>
-		<li><a href="{{ path('postcard_postcard_delete', { 'id' : postcard.id }) }}">Delete</a></li>
+		<li><a class="btn btn-inverse" href="{{ path('postcard_postcard_edit', { 'id' : postcard.id }) }}">Edit</a></li>
+		<li><a class="btn btn-danger" href="{{ path('postcard_postcard_delete', { 'id' : postcard.id }) }}">Delete</a></li>
 		{% endif %}
 	</ul>
 {% endfor %}
-<a href="{{path('postcard_postcard_new')}}">Publish your Postcard</a>
+<a class="btn btn-info" href="{{path('postcard_postcard_new')}}">Publish your Postcard</a>
 {% endblock %}

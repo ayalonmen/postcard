@@ -1,6 +1,6 @@
-{% extends '::base.html.twig' %}
+{% extends 'PostcardPostcardBundle::base.html.twig' %}
 
-{% block body %}
+{% block content %}
 <h1>{{ postcard.title }}</h1>
 <p>Created on {{ postcard.created|date('d-m-y') }} </p>
 <p>Updated on {{ postcard.updated|date('d-m-y') }} </p>
@@ -12,8 +12,7 @@
 <p>Send by: {{ postcard.sender }}</p>
 <p>External link: {{ postcard.pictureUrl }}</p>
 {% if is_granted('IS_AUTHENTICATED_REMEMBERED') and postcard.isSender(app.user) %}
-	<p><a href="{{ path('postcard_postcard_edit', { 'id' : postcard.id }) }}">Edit</a></p>
-	<p><a href="{{ path('postcard_postcard_delete', { 'id' : postcard.id }) }}">Delete</a></p>
+	<p><a class="btn btn-inverse" href="{{ path('postcard_postcard_edit', { 'id' : postcard.id }) }}">Edit</a></p>
+	<p><a class="btn btn-danger" href="{{ path('postcard_postcard_delete', { 'id' : postcard.id }) }}">Delete</a></p>
 {% endif %}
-<a href="{{ path('postcard_postcard_index')}}">Back to index</a>
 {% endblock %}

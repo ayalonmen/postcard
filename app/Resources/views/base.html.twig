@@ -17,28 +17,26 @@
                 <li class="divider-vertical"></li>
                 <li {% if current_route == 'postcard_postcard_index' %} class="active" {% endif %}><a href="{{ path('postcard_postcard_index') }}">Postcards</a></li>
                 <li class="divider-vertical"></li>
+                {% if not is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                 <li {% if current_route == 'fos_user_registration_register' %} class="active" {% endif %}><a href="{{ path('fos_user_registration_register') }}">Register</a></li>
+                {% endif %}
               </ul>
               <form class="navbar-search pull-right">
                 <input type="text" class="search-query" placeholder="Search">
               </form>
               <ul class="nav pull-right">
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
+                {% else %}
+                {{ facebook_initialize({'xfbml': true, 'fbAsyncInit': 'onFbInit();'}) }}
                 <li {% if current_route == 'fos_user_security_login' %} class="active" {% endif %}><a href="{{ path('fos_user_security_login') }}">Login</a></li>
                 <li class="divider-vertical"></li>
                 <li><a href="#">{{ facebook_login_button({'autologoutlink': true}) }}</a></li>
+                {% endif %}
               </ul>
           </div>
       </div>
       {% block body %}{% endblock %}
-      <div class="container">
-          {{ facebook_initialize({'xfbml': true, 'fbAsyncInit': 'onFbInit();'}) }}
-          {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-              <a href="{{ path('fos_user_security_logout') }}">Logout</a>
-          {% else %}
-              <a href="{{ path('fos_user_security_login') }}">Login</a>
-              <a href="{{ path('fos_user_registration_register') }}" >Register</a>
-          {% endif %}
-      </div>
         {% block javascripts %}{% endblock %}
         <script>
           function goLogIn(){
