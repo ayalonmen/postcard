@@ -37,7 +37,8 @@ class PostcardExtension extends \Twig_Extension
     public function getFunctions()
     {
     	return array(
-    		'postcard_mini' => new \Twig_Function_Method($this, 'renderMini', array('is_safe' => array('html')))
+    		'postcard_mini' => new \Twig_Function_Method($this, 'renderMini', array('is_safe' => array('html'))),
+    		'postcard_mini_list' => new \Twig_Function_Method($this, 'renderMiniList', array('is_safe' => array('html'))),
     	);
     }
 
@@ -54,8 +55,16 @@ class PostcardExtension extends \Twig_Extension
     /*
      *
      */
-    public function renderMini(PostcardInterface $postcard)
+    public function renderMini(PostcardInterface $postcard, $width = null)
     {
-    	return $this->container->get('postcard_postcard.postcard_helper')->renderMini($postcard);
+    	return $this->container->get('postcard_postcard.postcard_helper')->renderMini($postcard, $width);
+    }
+
+    /*
+     *
+     */
+    public function renderMiniList($postcards, $frequency = 3)
+    {
+    	return $this->container->get('postcard_postcard.postcard_helper')->renderMiniList($postcards, $frequency);
     }
 }

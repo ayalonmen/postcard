@@ -1,0 +1,12 @@
+{% set width = (12 / frequency) %}
+{% set counter = 0 %}
+<div class="row">
+{% for postcard in postcards %}
+	{% if counter != 0 and (counter % frequency) == 0 %}
+	</div>
+	<div class="row">
+	{% endif %}
+	{{ postcard_mini(postcard, width) }}
+	{% set counter = counter + 1 %}
+{% endfor %}
+</div>

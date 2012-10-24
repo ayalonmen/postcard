@@ -1,4 +1,4 @@
-<ul class="span3">
+<ul class="span{{ width ? width : 4 }}">
 	<li><a href="{{ path('postcard_postcard_show', { 'id' : postcard.id })}}">{{ postcard.id }}</a> created at {{ postcard.created|date('d-m-y') }} </li>
 	<li>{{ postcard.title }} <strong>send by: {{ postcard.sender }}</strong></li>
 	<li>{{ postcard.location }}</li>

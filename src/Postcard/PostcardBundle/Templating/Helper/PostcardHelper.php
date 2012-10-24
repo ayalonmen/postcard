@@ -24,10 +24,19 @@ class PostcardHelper extends Helper
 		$this->templating = $templating;
 	}
 
-	public function renderMini(PostcardInterface $postcard)
+	public function renderMini(PostcardInterface $postcard, $width = null)
 	{
 		return $this->templating->render('PostcardPostcardBundle:Helper:mini.html.twig', array(
 			'postcard' => $postcard,
+			'width' => $width,
+		));
+	}
+
+	public function renderMiniList($postcards, $frequency = 3)
+	{
+		return $this->templating->render('PostcardPostcardBundle:Helper:mini_list.html.twig', array(
+			'postcards' => $postcards,
+			'frequency' => $frequency,
 		));
 	}
 
