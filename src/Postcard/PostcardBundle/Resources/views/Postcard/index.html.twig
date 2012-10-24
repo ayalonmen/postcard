@@ -2,18 +2,16 @@
 
 {% block content %}
 <h1>List of all Postcards</h1>
+{% set counter = 0 %}
+<div class="row">
 {% for postcard in postcards %}
-	<ul>
-		<li><a href="{{ path('postcard_postcard_show', { 'id' : postcard.id })}}">{{ postcard.id }}</a> created at {{ postcard.created|date('d-m-y') }} </li>
-		<li>{{ postcard.title }} <strong>send by: {{ postcard.sender }}</strong></li>
-		<li>{{ postcard.location }}</li>
-		<li>{{ postcard.body }}</li>
-		<li>{{ postcard.picture }}</li>
-		{% if is_granted('IS_AUTHENTICATED_REMEMBERED') and postcard.isSender(app.user) %}
-		<li><a class="btn btn-inverse" href="{{ path('postcard_postcard_edit', { 'id' : postcard.id }) }}">Edit</a></li>
-		<li><a class="btn btn-danger" href="{{ path('postcard_postcard_delete', { 'id' : postcard.id }) }}">Delete</a></li>
-		{% endif %}
-	</ul>
+	{% if counter != 0 and (counter % 3) == 0 %}
+	</div>
+	<div class="row">
+	{% endif %}
+	{{ postcard_mini(postcard) }}
+	{% set counter = counter + 1 %}
 {% endfor %}
+</div>
 <a class="btn btn-info" href="{{path('postcard_postcard_new')}}">Publish your Postcard</a>
 {% endblock %}

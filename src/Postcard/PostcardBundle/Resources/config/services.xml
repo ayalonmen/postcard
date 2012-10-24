@@ -7,6 +7,8 @@
     <parameters>
         <parameter key="postcard_postcard.postcard_manager.class">Postcard\PostcardBundle\Entity\PostcardManager</parameter>
         <parameter key="postcard_postcard.postcard.class">Postcard\PostcardBundle\Entity\Postcard</parameter>
+        <parameter key="postcard_postcard.postcard_helper.class">Postcard\PostcardBundle\Templating\Helper\PostcardHelper</parameter>
+        <parameter key="postcard_postcard.postcard_twig.class">Postcard\PostcardBundle\Twig\Extension\PostcardExtension</parameter>
     </parameters>
 
     <services>
@@ -15,6 +17,14 @@
             <argument>%postcard_postcard.postcard.class%</argument>
         </service>
         <service id="postcard_postcard.entity_manager" factory-service="doctrine" factory-method="getManager" class="Doctrine\ORM\EntityManager" />
+        <service id="postcard_postcard.postcard_helper" class="%postcard_postcard.postcard_helper.class%">
+            <argument type="service" id="templating" />
+            <tag name="templating.helper" alias="postcard_postcard.postcard_helper" />
+        </service>
+        <service id="postcard_postcard.postcard_twig" class="%postcard_postcard.postcard_twig.class%">
+            <argument type="service" id="service_container" />
+            <tag name="twig.extension" />
+        </service>
     </services>
 
 </container>
