@@ -1,11 +1,13 @@
-<ul class="span{{ width ? width : 4 }}">
-	<li><a href="{{ path('postcard_postcard_show', { 'id' : postcard.id })}}">{{ postcard.id }}</a> created at {{ postcard.created|date('d-m-y') }} </li>
-	<li>{{ postcard.title }} <strong>send by: {{ postcard.sender }}</strong></li>
-	<li>{{ postcard.location }}</li>
-	<li>{{ postcard.body }}</li>
-	<li>{{ postcard.picture }}</li>
+<div class="span{{ width ? width : 4 }} miniPostcard">
+	<h4>{{ postcard.title }}</h4>
+	<p>{{ postcard.location }}</p>
+	<img src="{{ postcard.pictureUri }}" />
+	<p> By  <strong>{{ postcard.sender }}</strong> on {{ postcard.created|date('d M y') }} </p>
+	<p class="btn-row">
+	<a class="btn btn-info btn-mini" href="{{ path('postcard_postcard_show', { 'id' : postcard.id })}}">Afficher</a>
 	{% if is_granted('IS_AUTHENTICATED_REMEMBERED') and postcard.isSender(app.user) %}
-	<li><a class="btn btn-inverse" href="{{ path('postcard_postcard_edit', { 'id' : postcard.id }) }}">Edit</a></li>
-	<li><a class="btn btn-danger" href="{{ path('postcard_postcard_delete', { 'id' : postcard.id }) }}">Delete</a></li>
+	<a class="btn btn-inverse btn-mini" href="{{ path('postcard_postcard_edit', { 'id' : postcard.id }) }}">Edit</a>
+	<a class="btn btn-danger btn-mini" href="{{ path('postcard_postcard_delete', { 'id' : postcard.id }) }}">Delete</a>
 	{% endif %}
-</ul>
+	</p>
+</div>

@@ -2,3 +2,18 @@ body {
 	background-image: url('/img/nyc.jpg');
 	background-repeat: no-repeat;
 }
+
+.miniPostcard {
+	background-color: #fff;
+	border-radius: 4px;
+	margin-bottom: 20px;
+}
+
+.miniPostcard > * {
+	margin-left: 70px;
+}
+
+.miniPostcard img {
+	width: 150px;
+	border: solid 1px #ccc;
+}
