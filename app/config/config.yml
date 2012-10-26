@@ -77,4 +77,10 @@ stof_doctrine_extensions:
         default:
             timestampable: true
 
+avalanche_imagine:
+    filters:
+        mini:
+            type:    thumbnail
+            options: { size: [120, 90], mode: outbound, quality: 100, format: png }
+
 postcard_postcard: ~

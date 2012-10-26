@@ -1,7 +1,7 @@
 <div class="span{{ width ? width : 4 }} miniPostcard">
 	<h4>{{ postcard.title }}</h4>
 	<p>{{ postcard.location }}</p>
-	<img src="{{ postcard.pictureUri }}" />
+	<img src="{{ postcard.pictureUri | apply_filter('mini') }}" />
 	<p> By  <strong>{{ postcard.sender }}</strong> on {{ postcard.created|date('d M y') }} </p>
 	<p class="btn-row">
 	<a class="btn btn-info btn-mini" href="{{ path('postcard_postcard_show', { 'id' : postcard.id })}}">Afficher</a>

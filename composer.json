@@ -23,7 +23,8 @@
         "doctrine/doctrine-migrations-bundle": "dev-master",
         "friendsofsymfony/user-bundle": "*",
         "friendsofsymfony/facebook-bundle": "dev-master",
-        "stof/doctrine-extensions-bundle": "dev-master"
+        "stof/doctrine-extensions-bundle": "dev-master",
+        "avalanche123/imagine-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
